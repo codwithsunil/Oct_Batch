@@ -7,14 +7,13 @@ namespace WinFormsApp
     public class loginManager
     {
 
-        public static List<User> _users = new List<User>();
         /// <summary>
         /// This will give you list of users 
         /// </summary>
         /// <returns></returns>
         public static List<User> GetAll()
         {
-            return _users;
+            return DataStoreManager.Users;
         }
 
         /// <summary>
@@ -48,7 +47,8 @@ namespace WinFormsApp
         /// <returns></returns>
         public static void Add(User user)
         {
-            _users.Add(user);
+            user.Id = DataStoreManager.NextUserId();
+            DataStoreManager.Users.Add(user);
         }
 
         /// <summary>
@@ -59,9 +59,12 @@ namespace WinFormsApp
         public static void Remove(User user)
         {
 
-            var u = _users.Where(x => x.UserName == user.UserName && x.Password == user.Password).FirstOrDefault();
+            var u = DataStoreManager.Users.Where(x => x.UserName == user.UserName && x.Password == user.Password).FirstOrDefault();
 
-            _users.Remove(u);
+            if (u != null)
+            {
+                DataStoreManager.Users.Remove(u);
+            }
 
             //_users.Add(user);
         }

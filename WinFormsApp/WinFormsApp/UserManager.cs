@@ -6,33 +6,34 @@ namespace WinFormsApp
 {
     public static class UserManager
     {
-        public static List<User> lstUsers = new List<User>();// this is the list where I will storing all the data 
-
-
         //GetAll 
         public static List<User> GetAll()
         {
-            return lstUsers;
+            return DataStoreManager.Users;
         }
 
-        // add 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="user"></param>
         public static void Add(User user)
         {
-            lstUsers.Add(user);
+            user.Id = DataStoreManager.NextUserId();
+            DataStoreManager.Users.Add(user);
         }
 
-
-        // add 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="user"></param>
         public static void Remove(User user)
         {
             //find 
-            var u = lstUsers.Where(x => x.UserName == user.UserName && x.Password == user.Password).FirstOrDefault();
-            if(u != null)
+            var u = DataStoreManager.Users.Where(x => x.UserName == user.UserName && x.Password == user.Password).FirstOrDefault();
+            if (u != null)
             {
-                lstUsers.Remove(u);
+                DataStoreManager.Users.Remove(u);
             }
-
-            
         }
 
     }

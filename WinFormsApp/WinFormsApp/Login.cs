@@ -17,20 +17,20 @@ namespace WinFormsApp
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+
             User logedInuser = new User();
             logedInuser.UserName = txtUserName.Text;
             logedInuser.Password = txtPassword.Text;
-
-
             if (loginManager.IsValidUser(logedInuser) == true)
             {
-                MessageBox.Show("Valid User");
+                Main main = new Main();
+                main.Show();
+                // hide Login Window : TODO 
             }
             else
             {
                 MessageBox.Show("InValid User");
             }
-
         }
 
         private void btnAddUser_Click(object sender, EventArgs e)
@@ -38,29 +38,15 @@ namespace WinFormsApp
             User logedInuser = new User();
             logedInuser.UserName = txtUserName.Text;
             logedInuser.Password = txtPassword.Text;
-
             loginManager.Add(logedInuser);
-
-            //LoadGrid();
         }
-
-        //private void LoadGrid()
-        //{
-        //    dataGridView1.DataSource = null;
-        //    dataGridView1.DataSource = loginManager.GetAll();
-        //    dataGridView1.Refresh();
-        //}
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
             User logedInuser = new User();
             logedInuser.UserName = txtUserName.Text;
             logedInuser.Password = txtPassword.Text;
-
             loginManager.Remove(logedInuser);
-
-            //LoadGrid();
-
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -70,9 +56,7 @@ namespace WinFormsApp
             logedInuser.Password = txtPassword.Text;
             // now pass this to user Manager 
             UserManager.Add(logedInuser);
-            //this will be fetching all the data stored in the list and show
 
-            LoadGrid();
 
         }
 
@@ -83,16 +67,6 @@ namespace WinFormsApp
             logedInuser.Password = txtPassword.Text;
             // now pass this to user Manager 
             UserManager.Remove(logedInuser);
-
-            LoadGrid();
-        }
-
-
-        private void LoadGrid()
-        {
-            userGridView.DataSource = null;
-            userGridView.DataSource = UserManager.GetAll();
-            userGridView.Refresh();
         }
     }
 }
