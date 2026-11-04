@@ -8,6 +8,8 @@ namespace WinFormsApp
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public string Tile { get; set; }
+        public string ISBN { get; set; }
         //todoS
     }
 }

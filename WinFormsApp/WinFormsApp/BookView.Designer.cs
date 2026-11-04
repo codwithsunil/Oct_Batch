@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             dataGridBook = new DataGridView();
+            txtSearch = new TextBox();
+            btnSearch = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridBook).BeginInit();
             SuspendLayout();
             // 
@@ -41,20 +43,42 @@
             dataGridBook.Size = new Size(776, 225);
             dataGridBook.TabIndex = 0;
             // 
+            // txtSearch
+            // 
+            txtSearch.Location = new Point(63, 51);
+            txtSearch.Name = "txtSearch";
+            txtSearch.Size = new Size(211, 31);
+            txtSearch.TabIndex = 1;
+            // 
+            // btnSearch
+            // 
+            btnSearch.Location = new Point(325, 51);
+            btnSearch.Name = "btnSearch";
+            btnSearch.Size = new Size(112, 34);
+            btnSearch.TabIndex = 2;
+            btnSearch.Text = "Search";
+            btnSearch.UseVisualStyleBackColor = true;
+            btnSearch.Click += btnSearch_Click;
+            // 
             // BookView
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnSearch);
+            Controls.Add(txtSearch);
             Controls.Add(dataGridBook);
             Name = "BookView";
             Text = "Book";
             ((System.ComponentModel.ISupportInitialize)dataGridBook).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private DataGridView dataGridBook;
+        private TextBox txtSearch;
+        private Button btnSearch;
     }
 }

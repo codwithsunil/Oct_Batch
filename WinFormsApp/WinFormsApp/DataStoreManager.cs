@@ -19,8 +19,17 @@ namespace WinFormsApp
             Users.Add(new User { Id = 1, UserName = "admin", Password = "admin123" });
             Users.Add(new User { Id = 2, UserName = "john", Password = "john123" });
 
-            //seed some books
-            Books.Add(new Book { Name = "Math" });
+
+            for (int i = 1; i <= 1000; i++)
+            {
+                Books.Add(new Book
+                {
+                    Id = i,
+                    Name = $"Book {i}",
+                    Tile = $"Sample Title {i}",
+                    ISBN = $"978{i:D10}"
+                });
+            }
 
             _isSeeded = true;
         }

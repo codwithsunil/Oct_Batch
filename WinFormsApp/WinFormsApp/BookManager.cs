@@ -10,9 +10,18 @@ namespace WinFormsApp
         /// TODO -- add edit and delete 
         /// </summary>
         /// <returns></returns>
-        public static List<Book> GetAll()
+        public static List<Book> GetAll(string search)
         {
-            return DataStoreManager.Books;
+            // this string is not empety 
+            if (string.IsNullOrEmpty(search) == true)
+            {
+                return DataStoreManager.Books;
+            }
+
+            var lstBooks= DataStoreManager.Books.Where(x=>x.Name.Contains(search) || x.Tile.Contains(search)).ToList();
+
+            return lstBooks;
+
         }
 
         /// <summary>
